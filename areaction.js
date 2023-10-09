@@ -1,4 +1,4 @@
-const { bot } = require('../lib/')
+const { bot,parsedJid } = require('../lib/')
 /*
 bot(
 	{
@@ -10,7 +10,10 @@ bot(
 	async (message, match) => {
   */
 const not_react_jids = '' // add jid so bot not react to message on that chat
-const gids = not_react_jids.split(',')
+
+
+const gids = parsedJid(not_react_jids)
+
 bot({ on: 'text', fromMe: false, type: 'ap' }, async (message, match) => {
 	if (!message.fromMe) {
 		const react = {
