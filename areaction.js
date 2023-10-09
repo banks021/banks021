@@ -9,7 +9,7 @@ bot(
 	},
 	async (message, match) => {
   */
-const jids = '120363037627355464@g.us'
+const not_react_jids = '' // add jid so bot not react to message on that chat
 const gids = jids.split(',')
 bot({ on: 'text', fromMe: false, type: 'ap' }, async (message, match) => {
 	if (!message.fromMe) {
@@ -17,7 +17,7 @@ bot({ on: 'text', fromMe: false, type: 'ap' }, async (message, match) => {
 			text: '❤️',
 			key: message.message.key,
 		}
-		if (gids.includes(message.jid))
+		if (!gids.includes(message.jid))
 			return await message.send(react, {}, 'react')
 	}
 })
